@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="krishi logo.png">
+    <title>Krishi - The Smart Farming Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo">
+            <img src="krishi logo.png" alt="Krishi Logo" id="logo-img"> 
+            Krishi-The Farming Assistant
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h1>Better Information-Better Planning-Brighter Future</h1>
+                <p>Our digital platform for real-time weather, crop market insights, and personalized cultivation suggestions.</p>
+            </div>
+        </section>
+
+        <section id="weather" class="dashboard-card">
+            <h2 class="card-title"><i class="fas fa-cloud-sun-rain"></i> Real-Time Weather Dashboard</h2>
+            <div class="input-group">
+                <select id="maharashtra-district-weather" name="district" class="form-select">
+                    <option value="" disabled selected>-- Select District --</option>
+                    <option value="ahmednagar">Ahmednagar (Ahilyanagar)</option>
+                    <option value="akola">Akola</option>
+                    <option value="amravati">Amravati</option>
+                    <option value="aurangabad">Aurangabad (Chhatrapati Sambhaji Nagar)</option>
+                    <option value="beed">Beed</option>
+                    <option value="bhandara">Bhandara</option>
+                    <option value="buldhana">Buldhana</option>
+                    <option value="chandrapur">Chandrapur</option>
+                    <option value="dhule">Dhule</option>
+                    <option value="gadchiroli">Gadchiroli</option>
+                    <option value="gondia">Gondia</option>
+                    <option value="hingoli">Hingoli</option>
+                    <option value="jalgaon">Jalgaon</option>
+                    <option value="jalna">Jalna</option>
+                    <option value="kolhapur">Kolhapur</option>
+                    <option value="latur">Latur</option>
+                    <option value="mumbai-city">Mumbai City</option>
+                    <option value="mumbai-suburban">Mumbai Suburban</option>
+                    <option value="nagpur">Nagpur</option>
+                    <option value="nanded">Nanded</option>
+                    <option value="nandurbar">Nandurbar</option>
+                    <option value="nashik">Nashik</option>
+                    <option value="osmanabad">Osmanabad (Dharashiv)</option>
+                    <option value="palghar">Palghar</option>
+                    <option value="parbhani">Parbhani</option>
+                    <option value="pune">Pune</option>
+                    <option value="raigad">Raigad</option>
+                    <option value="ratnagiri">Ratnagiri</option>
+                    <option value="sangli">Sangli</option>
+                    <option value="satara">Satara</option>
+                    <option value="sindhudurg">Sindhudurg</option>
+                    <option value="solapur">Solapur</option>
+                    <option value="thane">Thane</option>
+                    <option value="wardha">Wardha</option>
+                    <option value="washim">Washim</option>
+                    <option value="yavatmal">Yavatmal</option>
+                </select>
+                <button onclick="fetchWeather()" class="btn btn-primary">Get Weather</button>
+            </div>
+            <div id="weather-output" class="output-area weather-grid">
+                <p class="placeholder-text"><i class="fas fa-location-dot"></i> Select a location to get current weather data.</p>
+            </div>
+        </section>
+
+        <section id="crop-suggest" class="dashboard-card">
+            <h2 class="card-title"><i class="fas fa-seedling"></i> Personalized Crop Suggestion</h2>
+            <p class="section-description">Input your soil test data. Recommendation is based on the climate of **Central India (Kharif/Rabi cycle)**.</p>
+            <div class="input-group crop-input-grid">
+                <input type="number" id="input-N" placeholder="Nitrogen (N) - ratio (0-140)" min="0" max="140" class="form-input">
+                <input type="number" id="input-P" placeholder="Phosphorus (P) - ratio (5-145)" min="5" max="145" class="form-input">
+                <input type="number" id="input-K" placeholder="Potassium (K) - ratio (5-205)" min="5" max="205" class="form-input">
+                <input type="number" id="input-pH" placeholder="Soil pH (e.g., 6.5)" step="0.1" min="3.5" max="9.9" class="form-input">
+            </div>
+            <button onclick="getSuggestedCrop()" class="btn btn-primary full-width-btn">Suggest Crop</button>
+            
+            <div id="crop-output" class="output-area crop-suggestion-output">
+                <p class="placeholder-text"><i class="fas fa-calculator"></i> Input all four soil values for the best result.</p>
+            </div>
+        </section>
+
+        <section id="market" class="dashboard-card">
+            <h2 class="card-title"><i class="fas fa-chart-line"></i> Latest Crop Market Prices</h2>
+            <p class="section-description">Prices are for demonstration, focusing only on major Mandis in the state of Maharashtra.</p>
+            <div class="input-group">
+                <select id="maharashtra-district-market" name="district" class="form-select">
+                    <option value="" disabled selected>-- Select District --</option>
+                    <option value="ahmednagar">Ahmednagar (Ahilyanagar)</option>
+                    <option value="akola">Akola</option>
+                    <option value="amravati">Amravati</option>
+                    <option value="aurangabad">Aurangabad (Chhatrapati Sambhaji Nagar)</option>
+                    <option value="beed">Beed</option>
+                    <option value="bhandara">Bhandara</option>
+                    <option value="buldhana">Buldhana</option>
+                    <option value="chandrapur">Chandrapur</option>
+                    <option value="dhule">Dhule</option>
+                    <option value="gadchiroli">Gadchiroli</option>
+                    <option value="gondia">Gondia</option>
+                    <option value="hingoli">Hingoli</option>
+                    <option value="jalgaon">Jalgaon</option>
+                    <option value="jalna">Jalna</option>
+                    <option value="kolhapur">Kolhapur</option>
+                    <option value="latur">Latur</option>
+                    <option value="mumbai-city">Mumbai City</option>
+                    <option value="mumbai-suburban">Mumbai Suburban</option>
+                    <option value="nagpur">Nagpur</option>
+                    <option value="nanded">Nanded</option>
+                    <option value="nandurbar">Nandurbar</option>
+                    <option value="nashik">Nashik</option>
+                    <option value="osmanabad">Osmanabad (Dharashiv)</option>
+                    <option value="palghar">Palghar</option>
+                    <option value="parbhani">Parbhani</option>
+                    <option value="pune">Pune</option>
+                    <option value="raigad">Raigad</option>
+                    <option value="ratnagiri">Ratnagiri</option>
+                    <option value="sangli">Sangli</option>
+                    <option value="satara">Satara</option>
+                    <option value="sindhudurg">Sindhudurg</option>
+                    <option value="solapur">Solapur</option>
+                    <option value="thane">Thane</option>
+                    <option value="wardha">Wardha</option>
+                    <option value="washim">Washim</option>
+                    <option value="yavatmal">Yavatmal</option>
+                </select>
+                <button onclick="getMarketRates()" class="btn btn-primary">Get Crop Rates</button>
+            </div>
+            <div class="market-table-container">
+                <table id="market-prices-table" class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Crop</th>
+                            <th>Mandi/Market</th>
+                            <th>Date</th>
+                            <th>Min. Price (₹/Quintal)</th>
+                            <th>Max. Price (₹/Quintal)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2025 Krishi - The Farming Assistant.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

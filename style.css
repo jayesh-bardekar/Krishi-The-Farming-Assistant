@@ -1,0 +1,406 @@
+/* ==============================
+   🌿 Krishi - The Smart Farming Assistant (Responsive CSS)
+   ============================== */
+
+/* Custom CSS Variables */
+:root {
+    --color-primary: #388e3c;
+    --color-primary-dark: #2e7d32;
+    --color-accent: #ffb300;
+    --color-background: #f4f6f8;
+    --color-surface: #ffffff;
+    --color-text-dark: #212121;
+    --color-text-light: #757575;
+    --spacing-default: 20px;
+    --box-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --border-radius-default: 8px;
+}
+
+/* Global Reset and Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    padding-top: 80px;
+}
+
+/* ==========================
+   HEADER
+   ========================== */
+.app-header {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    padding: 0 var(--spacing-default);
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#logo-img {
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* ==========================
+   MAIN CONTENT
+   ========================== */
+.main-content {
+    padding: var(--spacing-default) 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dashboard-card {
+    background-color: var(--color-surface);
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: var(--border-radius-default);
+    box-shadow: var(--box-shadow-light);
+}
+
+.card-title {
+    color: var(--color-primary-dark);
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.card-title i {
+    margin-right: 10px;
+    color: var(--color-accent);
+}
+
+.section-description {
+    color: var(--color-text-light);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* ==========================
+   HERO SECTION
+   ========================== */
+.hero-section {
+    text-align: center;
+    background: url("nature img.jpg") center/cover no-repeat;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-default);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--color-surface);
+    padding: 30px;
+    max-width: 700px;
+}
+
+.hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-content p {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* ==========================
+   FORM CONTROLS (Fixed Select)
+   ========================== */
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: var(--spacing-default);
+    width: 100%;
+}
+
+.form-select,
+.form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: var(--color-surface);
+    color: var(--color-text-dark);
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius-default);
+    padding: 12px 15px;
+    font-size: 1rem;
+    flex: 1 1 220px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.form-select:focus,
+.form-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 6px rgba(56, 142, 60, 0.4);
+    outline: none;
+}
+
+.form-select {
+    background-image: linear-gradient(45deg, transparent 50%, var(--color-primary) 50%), 
+                      linear-gradient(135deg, var(--color-primary) 50%, transparent 50%);
+    background-position: calc(100% - 20px) calc(1em + 5px), calc(100% - 15px) calc(1em + 5px);
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-surface);
+    border: none;
+    padding: 12px 25px;
+    border-radius: var(--border-radius-default);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s, transform 0.2s;
+    white-space: nowrap;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+}
+
+.full-width-btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* ==========================
+   OUTPUT AREAS
+   ========================== */
+.output-area {
+    min-height: 120px;
+    padding: 20px;
+    border: 2px dashed #cfd8dc;
+    border-radius: var(--border-radius-default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.placeholder-text {
+    color: var(--color-text-light);
+    font-style: italic;
+}
+
+.placeholder-text i {
+    margin-right: 8px;
+    color: var(--color-primary);
+}
+
+/* Weather Output */
+.weather-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+}
+
+.weather-card-item {
+    background-color: #e8f5e9;
+    padding: 15px;
+    border-radius: var(--border-radius-default);
+    text-align: center;
+    border-left: 5px solid var(--color-primary);
+}
+
+.weather-card-item h4 {
+    font-size: 1.1rem;
+    color: var(--color-primary-dark);
+}
+
+/* Crop Suggestion Output */
+.suggestion-box {
+    background-color: #f1f8e9;
+    border: 3px solid var(--color-primary);
+    padding: 30px;
+    border-radius: var(--border-radius-default);
+    text-align: center;
+    flex: 1 1 100%;
+}
+
+.suggestion-box h3 {
+    font-size: 2rem;
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+}
+
+.suggestion-box p {
+    font-size: 1.1rem;
+    color: var(--color-text-light);
+}
+
+.error-message {
+    color: #d32f2f;
+    background-color: #ffebee;
+    border: 1px solid #ef9a9a;
+    padding: 15px;
+    border-radius: var(--border-radius-default);
+    font-weight: 500;
+}
+
+/* ==========================
+   TABLES
+   ========================== */
+.market-table-container {
+    overflow-x: auto;
+    margin-top: var(--spacing-default);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.data-table th,
+.data-table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.data-table thead th {
+    background-color: #f5f5f5;
+    color: var(--color-text-dark);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.data-table tbody tr:hover {
+    background-color: #e8f5e9;
+}
+
+/* ==========================
+   FOOTER
+   ========================== */
+.app-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--color-text-dark);
+    color: #bdbdbd;
+    font-size: 0.85rem;
+    margin-top: 30px;
+}
+
+/* ==========================
+   RESPONSIVE DESIGN
+   ========================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .dashboard-card {
+        padding: 20px;
+    }
+}
+
+/* Mobiles */
+@media (max-width: 768px) {
+    body {
+        padding-top: 100px;
+    }
+
+    .app-header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .logo {
+        justify-content: center;
+    }
+
+    #logo-img {
+        height: 55px;
+    }
+
+    .hero-section {
+        min-height: 180px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+
+    .input-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .form-select,
+    .form-input,
+    .btn-primary {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .dashboard-card {
+        padding: 15px;
+    }
+
+    .data-table {
+        font-size: 0.9rem;
+    }
+}
